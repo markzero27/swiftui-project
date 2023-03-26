@@ -8,6 +8,11 @@
 import Foundation
 import SwiftUI
 
+struct TaskItem {
+    let title: String
+    let length: Int
+    let color: ColorTheme
+}
 
 enum ColorTheme {
     case yellow, darkgreen, red
@@ -22,9 +27,4 @@ enum ColorTheme {
             return Color("red")
         }
     }
-}
-struct TaskItem {
-    let title: String
-    let length: Int
-    let color: ColorTheme
 }

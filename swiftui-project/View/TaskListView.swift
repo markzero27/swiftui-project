@@ -8,22 +8,27 @@
 import SwiftUI
 import CoreData
 
-struct MainView: View {
+struct TaskListView: View {
+    
+    // MARK: - Properties
+    
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<Item>
+    private var taskList: FetchedResults<Item>
     
     @State private var isPresented: Bool = false
+
+    // MARK: - Body
 
     var body: some View {
         ScrollView {
             VStack(spacing: .zero) {
-                ForEach(items) { item in
+                ForEach(taskList) { item in
                     NavigationLink {
-                        TaskItemDetailsView()
+                        TaskDetailsView()
                     } label: {
                         TaskItemView()
                     }
@@ -34,9 +39,6 @@ struct MainView: View {
                 .onDelete(perform: deleteItems)
             }
             .padding()
-            .fullScreenCover(isPresented: $isPresented) {
-                ConfigureEventView()
-            }
         }
         .toolbar {
             ToolbarItem {
@@ -50,35 +52,34 @@ struct MainView: View {
         }
         .navigationTitle(Text("Daily Tasks"))
         .embedNAvigationView()
-        
+        .fullScreenCover(isPresented: $isPresented) {
+            ConfigureEventView()
+        }
     }
 
+}
 
-    private func deleteItems(offsets: IndexSet) {
+// MARK: - Private Functions
+
+private extension TaskListView {
+    
+    func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
+            offsets.map { taskList[$0] }.forEach(viewContext.delete)
             do {
                 try viewContext.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
         }
     }
+    
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
-
-struct MainView_Previews: PreviewProvider {
+// MARK: - Preview
+struct TaskListView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        TaskListView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

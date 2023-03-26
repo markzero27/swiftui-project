@@ -29,7 +29,6 @@ struct TaskItemView: View {
         .padding(.vertical, 24)
         .padding(.horizontal, 16)
         .background(Color.ui.yellow)
-        
     }
 }
 

@@ -14,4 +14,23 @@ extension View {
         return NavigationView { self }
     }
     
+    func fullWidth() -> some View {
+        return HStack {
+            Spacer()
+            self
+            Spacer()
+        }
+    }
+    
+    func fullHeight() -> some View {
+        return VStack {
+            Spacer()
+            self
+            Spacer()
+        }
+    }
+    
+    func borderBoxStyle() -> some View {
+        modifier(BorderBoxStyle())
+    }
 }

@@ -13,12 +13,12 @@
 		938BC89B29D06E1D0099EB7B /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938BC89A29D06E1D0099EB7B /* Persistence.swift */; };
 		938BC89E29D06E1D0099EB7B /* swiftui_project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 938BC89C29D06E1D0099EB7B /* swiftui_project.xcdatamodeld */; };
 		938BC8AB29D06F660099EB7B /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938BC8AA29D06F660099EB7B /* Constant.swift */; };
-		938BC8AD29D06FDE0099EB7B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938BC8AC29D06FDE0099EB7B /* MainView.swift */; };
+		938BC8AD29D06FDE0099EB7B /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938BC8AC29D06FDE0099EB7B /* TaskListView.swift */; };
 		938BC8AF29D072010099EB7B /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938BC8AE29D072010099EB7B /* View+Extensions.swift */; };
 		938BC8B129D0726A0099EB7B /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938BC8B029D0726A0099EB7B /* Color+Extensions.swift */; };
 		938BC8B529D075570099EB7B /* TaskItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938BC8B429D075570099EB7B /* TaskItemView.swift */; };
 		938BC8B729D0756E0099EB7B /* ConfigureEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938BC8B629D0756E0099EB7B /* ConfigureEventView.swift */; };
-		938BC8B929D0757E0099EB7B /* TaskItemDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938BC8B829D0757D0099EB7B /* TaskItemDetailsView.swift */; };
+		938BC8B929D0757E0099EB7B /* TaskDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938BC8B829D0757D0099EB7B /* TaskDetailsView.swift */; };
 		938BC8BB29D075AA0099EB7B /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938BC8BA29D075AA0099EB7B /* TaskItem.swift */; };
 		938BC8BD29D0966D0099EB7B /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938BC8BC29D0966D0099EB7B /* Modifiers.swift */; };
 /* End PBXBuildFile section */
@@ -31,12 +31,12 @@
 		938BC89A29D06E1D0099EB7B /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		938BC89D29D06E1D0099EB7B /* swiftui_project.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = swiftui_project.xcdatamodel; sourceTree = "<group>"; };
 		938BC8AA29D06F660099EB7B /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		938BC8AC29D06FDE0099EB7B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		938BC8AC29D06FDE0099EB7B /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
 		938BC8AE29D072010099EB7B /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		938BC8B029D0726A0099EB7B /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		938BC8B429D075570099EB7B /* TaskItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItemView.swift; sourceTree = "<group>"; };
 		938BC8B629D0756E0099EB7B /* ConfigureEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureEventView.swift; sourceTree = "<group>"; };
-		938BC8B829D0757D0099EB7B /* TaskItemDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItemDetailsView.swift; sourceTree = "<group>"; };
+		938BC8B829D0757D0099EB7B /* TaskDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsView.swift; sourceTree = "<group>"; };
 		938BC8BA29D075AA0099EB7B /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 		938BC8BC29D0966D0099EB7B /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,10 +104,10 @@
 		938BC8A529D06E2C0099EB7B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				938BC8AC29D06FDE0099EB7B /* MainView.swift */,
+				938BC8AC29D06FDE0099EB7B /* TaskListView.swift */,
 				938BC8B429D075570099EB7B /* TaskItemView.swift */,
 				938BC8B629D0756E0099EB7B /* ConfigureEventView.swift */,
-				938BC8B829D0757D0099EB7B /* TaskItemDetailsView.swift */,
+				938BC8B829D0757D0099EB7B /* TaskDetailsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -216,8 +216,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				938BC89B29D06E1D0099EB7B /* Persistence.swift in Sources */,
-				938BC8B929D0757E0099EB7B /* TaskItemDetailsView.swift in Sources */,
-				938BC8AD29D06FDE0099EB7B /* MainView.swift in Sources */,
+				938BC8B929D0757E0099EB7B /* TaskDetailsView.swift in Sources */,
+				938BC8AD29D06FDE0099EB7B /* TaskListView.swift in Sources */,
 				938BC8B529D075570099EB7B /* TaskItemView.swift in Sources */,
 				938BC8BD29D0966D0099EB7B /* Modifiers.swift in Sources */,
 				938BC89E29D06E1D0099EB7B /* swiftui_project.xcdatamodeld in Sources */,

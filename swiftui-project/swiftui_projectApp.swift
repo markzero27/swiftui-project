@@ -13,7 +13,7 @@ struct swiftui_projectApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MainView()
+            TaskListView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
