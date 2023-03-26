@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TaskItemDetailsView: View {
+    @State private var isPresented: Bool = false
     var body: some View {
         VStack {
             HStack {
@@ -74,7 +75,7 @@ struct TaskItemDetailsView: View {
         }
         .toolbar {
             ToolbarItem {
-                Button(action: {}) {
+                Button(action: { isPresented.toggle() }) {
                     Text("Edit")
                 }
             }
@@ -83,6 +84,9 @@ struct TaskItemDetailsView: View {
         .background(Color.ui.yellow)
         .cornerRadius(10)
         .padding()
+        .fullScreenCover(isPresented: $isPresented) {
+            ConfigureEventView()
+        }
         
     }
 }
