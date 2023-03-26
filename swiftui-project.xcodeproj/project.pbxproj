@@ -8,21 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		938BC89229D06E1B0099EB7B /* swiftui_projectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938BC89129D06E1B0099EB7B /* swiftui_projectApp.swift */; };
-		938BC89429D06E1B0099EB7B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938BC89329D06E1B0099EB7B /* ContentView.swift */; };
 		938BC89629D06E1D0099EB7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 938BC89529D06E1D0099EB7B /* Assets.xcassets */; };
 		938BC89929D06E1D0099EB7B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 938BC89829D06E1D0099EB7B /* Preview Assets.xcassets */; };
 		938BC89B29D06E1D0099EB7B /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938BC89A29D06E1D0099EB7B /* Persistence.swift */; };
 		938BC89E29D06E1D0099EB7B /* swiftui_project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 938BC89C29D06E1D0099EB7B /* swiftui_project.xcdatamodeld */; };
+		938BC8AB29D06F660099EB7B /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938BC8AA29D06F660099EB7B /* Constant.swift */; };
+		938BC8AD29D06FDE0099EB7B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938BC8AC29D06FDE0099EB7B /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		938BC88E29D06E1B0099EB7B /* swiftui-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swiftui-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		938BC89129D06E1B0099EB7B /* swiftui_projectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftui_projectApp.swift; sourceTree = "<group>"; };
-		938BC89329D06E1B0099EB7B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		938BC89529D06E1D0099EB7B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		938BC89829D06E1D0099EB7B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		938BC89A29D06E1D0099EB7B /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		938BC89D29D06E1D0099EB7B /* swiftui_project.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = swiftui_project.xcdatamodel; sourceTree = "<group>"; };
+		938BC8AA29D06F660099EB7B /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		938BC8AC29D06FDE0099EB7B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +57,13 @@
 		938BC89029D06E1B0099EB7B /* swiftui-project */ = {
 			isa = PBXGroup;
 			children = (
+				938BC8A929D06EBB0099EB7B /* Extensions */,
+				938BC8A829D06EB50099EB7B /* Services */,
+				938BC8A729D06E620099EB7B /* Utility */,
+				938BC8A629D06E3E0099EB7B /* Model */,
+				938BC8A529D06E2C0099EB7B /* View */,
+				938BC8A429D06E250099EB7B /* ViewModel */,
 				938BC89129D06E1B0099EB7B /* swiftui_projectApp.swift */,
-				938BC89329D06E1B0099EB7B /* ContentView.swift */,
 				938BC89529D06E1D0099EB7B /* Assets.xcassets */,
 				938BC89A29D06E1D0099EB7B /* Persistence.swift */,
 				938BC89C29D06E1D0099EB7B /* swiftui_project.xcdatamodeld */,
@@ -71,6 +78,50 @@
 				938BC89829D06E1D0099EB7B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		938BC8A429D06E250099EB7B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		938BC8A529D06E2C0099EB7B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				938BC8AC29D06FDE0099EB7B /* MainView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		938BC8A629D06E3E0099EB7B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		938BC8A729D06E620099EB7B /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				938BC8AA29D06F660099EB7B /* Constant.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		938BC8A829D06EB50099EB7B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		938BC8A929D06EBB0099EB7B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,8 +195,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				938BC89B29D06E1D0099EB7B /* Persistence.swift in Sources */,
+				938BC8AD29D06FDE0099EB7B /* MainView.swift in Sources */,
 				938BC89E29D06E1D0099EB7B /* swiftui_project.xcdatamodeld in Sources */,
-				938BC89429D06E1B0099EB7B /* ContentView.swift in Sources */,
+				938BC8AB29D06F660099EB7B /* Constant.swift in Sources */,
 				938BC89229D06E1B0099EB7B /* swiftui_projectApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
