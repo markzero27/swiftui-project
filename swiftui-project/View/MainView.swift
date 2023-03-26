@@ -17,29 +17,32 @@ struct MainView: View {
     private var items: FetchedResults<Item>
 
     var body: some View {
-        NavigationView {
-            List {
+        ScrollView {
+            VStack(spacing: .zero) {
                 ForEach(items) { item in
                     NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                        TaskItemDetailsView()
                     } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+                        TaskItemView()
                     }
+                    .listRowSeparator(.hidden)
+                    Divider()
+                        .opacity(0.5)
                 }
                 .onDelete(perform: deleteItems)
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
+            .padding()
+        }
+        .toolbar {
+            ToolbarItem {
+                Button(action: addItem) {
+                    Image(systemName: "plus")
+                        .font(Font.system(size: 20, weight: .bold))
                 }
             }
-            Text("Select an item")
         }
+        .navigationTitle(Text("Daily Tasks"))
+        .embedNAvigationView()
     }
 
     private func addItem() {
