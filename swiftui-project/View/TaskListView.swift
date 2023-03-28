@@ -13,14 +13,16 @@ struct TaskListView: View {
     // MARK: - Properties
     
     @Environment(\.managedObjectContext) private var viewContext
-
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var taskList: FetchedResults<Item>
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \Item.timeStamp, ascending: true)
+        ],
+        animation: .default
+    ) private var taskList: FetchedResults<Item>
     
     @State private var isPresented: Bool = false
-
+    @State private var refreshID = UUID()
+    
     // MARK: - Body
 
     var body: some View {
@@ -28,15 +30,14 @@ struct TaskListView: View {
             VStack(spacing: .zero) {
                 ForEach(taskList) { item in
                     NavigationLink {
-                        TaskDetailsView()
+                        TaskDetailsView(taskItem: item)
                     } label: {
-                        TaskItemView()
+                        TaskItemView(taskItem: item)
                     }
                     .listRowSeparator(.hidden)
                     Divider()
                         .opacity(0.5)
                 }
-                .onDelete(perform: deleteItems)
             }
             .padding()
         }
@@ -57,24 +58,6 @@ struct TaskListView: View {
         }
     }
 
-}
-
-// MARK: - Private Functions
-
-private extension TaskListView {
-    
-    func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { taskList[$0] }.forEach(viewContext.delete)
-            do {
-                try viewContext.save()
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-    
 }
 
 // MARK: - Preview

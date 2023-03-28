@@ -21,3 +21,4 @@ let dateFormatter: DateFormatter = {
 
 // MARK: - UX
 
+let feedback = UINotificationFeedbackGenerator()

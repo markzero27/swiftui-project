@@ -12,6 +12,7 @@ extension Color {
     
     struct UI {
          let yellow = Color("yellow")
-         let navy = Color("navy")
+         let darkGreen = Color("darkGreen")
+         let red = Color("red")
     }
 }

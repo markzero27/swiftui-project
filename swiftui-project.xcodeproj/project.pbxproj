@@ -19,8 +19,11 @@
 		938BC8B529D075570099EB7B /* TaskItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938BC8B429D075570099EB7B /* TaskItemView.swift */; };
 		938BC8B729D0756E0099EB7B /* ConfigureEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938BC8B629D0756E0099EB7B /* ConfigureEventView.swift */; };
 		938BC8B929D0757E0099EB7B /* TaskDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938BC8B829D0757D0099EB7B /* TaskDetailsView.swift */; };
-		938BC8BB29D075AA0099EB7B /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938BC8BA29D075AA0099EB7B /* TaskItem.swift */; };
+		938BC8BB29D075AA0099EB7B /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938BC8BA29D075AA0099EB7B /* ColorTheme.swift */; };
 		938BC8BD29D0966D0099EB7B /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938BC8BC29D0966D0099EB7B /* Modifiers.swift */; };
+		939A1B1129D2A516004EAA2E /* CoreData+Item+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939A1B1029D2A516004EAA2E /* CoreData+Item+Extension.swift */; };
+		939A1B1329D2C9B6004EAA2E /* Keyboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939A1B1229D2C9B6004EAA2E /* Keyboard+Extensions.swift */; };
+		939A1B1529D2D17F004EAA2E /* ConfigureEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939A1B1429D2D17F004EAA2E /* ConfigureEventViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,8 +40,11 @@
 		938BC8B429D075570099EB7B /* TaskItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItemView.swift; sourceTree = "<group>"; };
 		938BC8B629D0756E0099EB7B /* ConfigureEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureEventView.swift; sourceTree = "<group>"; };
 		938BC8B829D0757D0099EB7B /* TaskDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsView.swift; sourceTree = "<group>"; };
-		938BC8BA29D075AA0099EB7B /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
+		938BC8BA29D075AA0099EB7B /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
 		938BC8BC29D0966D0099EB7B /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
+		939A1B1029D2A516004EAA2E /* CoreData+Item+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreData+Item+Extension.swift"; sourceTree = "<group>"; };
+		939A1B1229D2C9B6004EAA2E /* Keyboard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keyboard+Extensions.swift"; sourceTree = "<group>"; };
+		939A1B1429D2D17F004EAA2E /* ConfigureEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureEventViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,7 @@
 		938BC8A429D06E250099EB7B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				939A1B1429D2D17F004EAA2E /* ConfigureEventViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -115,7 +122,7 @@
 		938BC8A629D06E3E0099EB7B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				938BC8BA29D075AA0099EB7B /* TaskItem.swift */,
+				938BC8BA29D075AA0099EB7B /* ColorTheme.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -141,6 +148,8 @@
 			children = (
 				938BC8AE29D072010099EB7B /* View+Extensions.swift */,
 				938BC8B029D0726A0099EB7B /* Color+Extensions.swift */,
+				939A1B1029D2A516004EAA2E /* CoreData+Item+Extension.swift */,
+				939A1B1229D2C9B6004EAA2E /* Keyboard+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -221,11 +230,14 @@
 				938BC8B529D075570099EB7B /* TaskItemView.swift in Sources */,
 				938BC8BD29D0966D0099EB7B /* Modifiers.swift in Sources */,
 				938BC89E29D06E1D0099EB7B /* swiftui_project.xcdatamodeld in Sources */,
-				938BC8BB29D075AA0099EB7B /* TaskItem.swift in Sources */,
+				938BC8BB29D075AA0099EB7B /* ColorTheme.swift in Sources */,
+				939A1B1129D2A516004EAA2E /* CoreData+Item+Extension.swift in Sources */,
 				938BC8AB29D06F660099EB7B /* Constant.swift in Sources */,
+				939A1B1529D2D17F004EAA2E /* ConfigureEventViewModel.swift in Sources */,
 				938BC8B129D0726A0099EB7B /* Color+Extensions.swift in Sources */,
 				938BC8AF29D072010099EB7B /* View+Extensions.swift in Sources */,
 				938BC8B729D0756E0099EB7B /* ConfigureEventView.swift in Sources */,
+				939A1B1329D2C9B6004EAA2E /* Keyboard+Extensions.swift in Sources */,
 				938BC89229D06E1B0099EB7B /* swiftui_projectApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

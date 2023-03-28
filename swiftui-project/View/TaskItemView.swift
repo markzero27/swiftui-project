@@ -8,15 +8,22 @@
 import SwiftUI
 
 struct TaskItemView: View {
+    
+    // MARK: - Properties
+    
+    @Environment(\.managedObjectContext) private var viewContext
+    @ObservedObject var taskItem: Item
+    
+    // MARK: - Body
+    
     var body: some View {
         HStack (alignment: .center, spacing: 5) {
-            Text("Design The App")
+            Text(taskItem.text ?? "")
                 .font(.headline)
                 .foregroundColor(.black)
-
             Spacer()
             HStack {
-                Text("120")
+                Text("\(taskItem.length)")
                     .font(Font.system(size: 12, weight: .bold))
                 Image(systemName: "clock")
                     .font(Font.system(size: 20, weight: .bold))
@@ -28,12 +35,6 @@ struct TaskItemView: View {
         }
         .padding(.vertical, 24)
         .padding(.horizontal, 16)
-        .background(Color.ui.yellow)
-    }
-}
-
-struct TaskItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        TaskItemView()
+        .background(taskItem.theme.color)
     }
 }

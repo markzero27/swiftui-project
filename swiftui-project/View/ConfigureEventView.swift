@@ -11,14 +11,29 @@ struct ConfigureEventView: View {
     
     // MARK: - Properties
     
+    @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) var dismiss
-    @State var title: String = ""
+    @ObservedObject private var viewModel: ConfigureEventViewModel
+    @FetchRequest(
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \Item.timeStamp, ascending: true)
+        ],
+        animation: .default
+    ) private var taskList: FetchedResults<Item>
+    
+    // MARK: - Initialization
+    
+    init(taskItem: Item? = nil) {
+        viewModel = ConfigureEventViewModel(task: taskItem)
+    }
     
     // MARK: - Body
     
     var body: some View {
         VStack {
-            deleteButtonView
+            if viewModel.id != nil {
+                deleteButtonView
+            }
             titleView
             timePickerView
             themePickerView
@@ -33,7 +48,7 @@ struct ConfigureEventView: View {
 
 private extension ConfigureEventView {
     var titleView: some View {
-        TextField("Title", text: $title)
+        TextField("Title", text: $viewModel.title)
             .borderBoxStyle()
     }
     
@@ -42,6 +57,17 @@ private extension ConfigureEventView {
             Image(systemName: "clock")
             Text("Length")
             Spacer()
+            TextField("Minutes", text: Binding<String>(
+                get: { String(viewModel.length) },
+                set: {
+                    if let value = NumberFormatter().number(from: $0) {
+                        viewModel.length = value.intValue
+                    }
+                }
+            ))
+                .multilineTextAlignment(.trailing)
+                .padding(.trailing)
+                .keyboardType(.numberPad)
         }
         .borderBoxStyle()
     }
@@ -51,8 +77,21 @@ private extension ConfigureEventView {
             Image(systemName: "square.grid.2x2")
             Text("Theme")
             Spacer()
+            themePickerButtonView
         }
         .borderBoxStyle()
+    }
+    
+    var themePickerButtonView: some View {
+        Picker("Pick a Color", selection: $viewModel.colorTheme) {
+           ForEach(ColorTheme.allCases, id: \.self) { theme in
+               HStack {
+                   Image(systemName: "square.fill")
+                       .foregroundStyle(theme.color, .blue)
+               }
+             
+           }
+       }
     }
     
     var actionButtonsView: some View {
@@ -64,15 +103,13 @@ private extension ConfigureEventView {
             }
             .frame(width: 125)
             Button {
-                // save task
+                save()
             } label: {
                 Text("Save")
                     .fullWidth()
                     .borderBoxStyle()
                     .background(Color.blue)
                     .foregroundColor(.white)
-               
-                
             }
         }
     }
@@ -82,6 +119,7 @@ private extension ConfigureEventView {
             Spacer()
             Button {
                 dismiss()
+                deleteItem()
             } label: {
                 Image(systemName: "trash")
                     .foregroundColor(.red)
@@ -89,12 +127,78 @@ private extension ConfigureEventView {
             .padding()
         }
     }
+    
+}
+
+// MARK: - Private functions
+
+private extension ConfigureEventView {
+    
+    func save() {
+        if viewModel.isNew {
+            addTask()
+        } else {
+            updateTask()
+        }
+        dismissKeyboard()
+        dismiss()
+    }
+    
+    func addTask() {
+        withAnimation {
+            let newTask = Item(context: viewContext)
+            newTask.id = UUID()
+            newTask.timeStamp = Date()
+            newTask.text = viewModel.title
+            newTask.theme = viewModel.colorTheme
+            newTask.length = Int16(viewModel.length)
+            
+            do {
+                try viewContext.save()
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
+    }
+    
+    func updateTask() {
+        withAnimation {
+            if let index = taskList.firstIndex(where: { $0.id == viewModel.id }) {
+                viewContext.performAndWait {
+                    let task = taskList[index]
+                    task.text = viewModel.title
+                    task.theme = viewModel.colorTheme
+                    task.length = Int16(viewModel.length)
+                    do {
+                        try viewContext.save()
+                    } catch {
+                        let nsError = error as NSError
+                        fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                    }
+                }
+            }
+        }
+    }
+    
+    func deleteItem() {
+        if let index = taskList.firstIndex(where: { $0.id == viewModel.id }) {
+            self.viewContext.delete(taskList[index])
+            do {
+                try viewContext.save()
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
+    }
+    
 }
 
 // MARK: - Preview
 
 struct ConfigureEventView_Previews: PreviewProvider {
     static var previews: some View {
-        ConfigureEventView()
+        ConfigureEventView(taskItem: nil)
     }
 }

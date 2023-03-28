@@ -10,6 +10,7 @@ import SwiftUI
 struct TaskDetailsView: View {
     // MARK: - Properties
     
+    @ObservedObject var taskItem: Item
     @State private var isPresented: Bool = false
     
     // MARK: - Body
@@ -30,11 +31,11 @@ struct TaskDetailsView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
-        .background(Color.ui.yellow)
+        .background(taskItem.theme.color)
         .cornerRadius(10)
         .padding()
         .fullScreenCover(isPresented: $isPresented) {
-            ConfigureEventView()
+            ConfigureEventView(taskItem: taskItem)
         }
         
     }
@@ -52,7 +53,7 @@ private extension TaskDetailsView {
                 HStack {
                     Image(systemName: "hourglass.bottomhalf.filled")
                         .font(.title)
-                    Text("19")
+                    Text("\(taskItem.minutesElapsed)")
                         .font(.caption)
                 }
             }
@@ -61,7 +62,7 @@ private extension TaskDetailsView {
                 Text("Minutes Remaining")
                     .font(.caption)
                 HStack {
-                    Text("101")
+                    Text(taskItem.minutesRemaining)
                         .font(.caption)
                     Image(systemName: "hourglass.tophalf.filled")
                         .font(.title)
@@ -73,12 +74,12 @@ private extension TaskDetailsView {
     
     var activeTimerView: some View {
         VStack {
-            Text("Design The App")
+            Text(taskItem.text ?? "")
                 .font(.largeTitle)
                 .padding(.bottom)
             HStack(alignment: .top) {
                 VStack {
-                    Text("101")
+                    Text(taskItem.minutesRemaining)
                         .font(.largeTitle)
                         .fontWeight(.bold)
                     Text("minutes")
@@ -87,7 +88,7 @@ private extension TaskDetailsView {
                 Text(":")
                     .font(.largeTitle)
                 VStack {
-                    Text("45")
+                    Text(taskItem.secondsRemaining)
                         .font(.largeTitle)
                         .fontWeight(.bold)
                     Text("seconds")
@@ -110,13 +111,5 @@ private extension TaskDetailsView {
                 .font(Font.system(size: 32, weight: .bold))
         }
         .padding()
-    }
-}
-
-// MARK: - Preview
-
-struct TaskDetailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        TaskDetailsView()
     }
 }
